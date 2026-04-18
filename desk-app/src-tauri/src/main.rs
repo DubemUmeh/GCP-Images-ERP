@@ -24,7 +24,7 @@ fn main() {
   tauri::Builder::default()
     .setup(|app| {
       let _main = WebviewWindowBuilder::new(app, "main", WebviewUrl::App("/".into()))
-        .title("Investment Desktop")
+        .title("GCP Images Printing Management System")
         .inner_size(1100.0, 760.0)
         .visible(false)
         .build()?;

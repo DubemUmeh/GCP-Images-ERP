@@ -58,7 +58,7 @@ export default function HomePage() {
   return (
     <main style={{ display: 'grid', placeItems: 'center', padding: '2rem' }}>
       <section className="w-full max-w:[420px] my-0 mx-auto border rounded-md p-6">
-        <h1 style={{ marginTop: 0 }}>Investment Desktop</h1>
+        <h1 style={{ marginTop: 0 }}>GCP Images Printing Management System</h1>
         <p style={{ marginBottom: 0, color: '#94a3b8' }}>
           Waiting for authenticated role routing...
         </p>
