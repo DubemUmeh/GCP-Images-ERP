@@ -1,0 +1,440 @@
+<html className="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>PrintDenk - Production Dashboard</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@300..700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#e4e2e4",
+            "error": "#ba1a1a",
+            "tertiary-container": "#0077cb",
+            "outline-variant": "#e6bdb6",
+            "primary-fixed": "#ffdad4",
+            "on-primary-fixed-variant": "#900c00",
+            "inverse-primary": "#ffb4a6",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f6f3f5",
+            "surface-variant": "#e4e2e4",
+            "surface-container-high": "#eae7ea",
+            "on-tertiary-fixed": "#001c37",
+            "on-secondary-container": "#fefcff",
+            "on-secondary-fixed": "#00174b",
+            "background": "#fcf8fb",
+            "secondary-fixed": "#dbe1ff",
+            "secondary-container": "#316bf3",
+            "surface-bright": "#fcf8fb",
+            "primary": "#b81200",
+            "on-surface-variant": "#5d403a",
+            "surface-container": "#f0edef",
+            "on-primary": "#ffffff",
+            "on-background": "#1b1b1d",
+            "on-secondary-fixed-variant": "#003ea8",
+            "inverse-on-surface": "#f3f0f2",
+            "secondary-fixed-dim": "#b4c5ff",
+            "secondary": "#0051d5",
+            "on-tertiary-container": "#fdfcff",
+            "tertiary-fixed-dim": "#a0c9ff",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#400200",
+            "surface": "#fcf8fb",
+            "on-tertiary-fixed-variant": "#00497f",
+            "tertiary-fixed": "#d2e4ff",
+            "inverse-surface": "#303032",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#fffbff",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-dim": "#dcd9dc",
+            "tertiary": "#005ea2",
+            "primary-fixed-dim": "#ffb4a6",
+            "surface-tint": "#bd1300",
+            "on-secondary": "#ffffff",
+            "outline": "#916f69",
+            "on-surface": "#1b1b1d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Space Grotesk"],
+            "body": ["Inter"],
+            "label": ["Inter"],
+            "industrial": ["Barlow Semi Condensed", "sans-serif"],
+            "technical": ["JetBrains Mono", "monospace"],
+            "human": ["DM Sans", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .btn-primary-press {
+      background: linear-gradient(180deg, #E8321A 0%, #B81200 100%);
+    }
+
+    .tonal-shift-bg {
+      background-color: #EDEDED;
+    }
+
+    .no-border-group {
+      border: none !important;
+    }
+  </style>
+</head>
+
+<body className="tonal-shift-bg font-human text-on-surface">
+  <!-- SideNavBar Anchor -->
+  <aside className="fixed inset-y-0 left-0 flex flex-col w-[220px] bg-[#1C1C1E] z-50">
+    <div className="p-6 flex items-center space-x-3">
+      <div className="w-8 h-8 rounded-sm bg-[#E8321A] flex items-center justify-center">
+        <span className="material-symbols-outlined text-white text-sm" data-icon="palette">palette</span>
+      </div>
+      <div>
+        <h1 className="text-xl font-bold text-white tracking-tight font-industrial">PrintDenk</h1>
+        <p className="text-[10px] text-gray-400 uppercase tracking-widest font-industrial">ERP Production</p>
+      </div>
+    </div>
+    <nav className="mt-4 flex-1">
+      <a className="flex items-center px-6 py-3 text-white border-l-4 border-[#E8321A] bg-white/5 transition-colors font-industrial font-semibold uppercase tracking-wider"
+        href="#">
+        <span className="material-symbols-outlined mr-3 text-[20px]" data-icon="dashboard">dashboard</span>
+        Dashboard
+      </a>
+      <a className="flex items-center px-6 py-3 text-gray-400 hover:bg-white/10 hover:text-white transition-colors font-human"
+        href="#">
+        <span className="material-symbols-outlined mr-3 text-[20px]" data-icon="view_kanban">view_kanban</span>
+        Kanban Board
+      </a>
+      <a className="flex items-center px-6 py-3 text-gray-400 hover:bg-white/10 hover:text-white transition-colors font-human"
+        href="#">
+        <span className="material-symbols-outlined mr-3 text-[20px]" data-icon="list_alt">list_alt</span>
+        All Jobs
+      </a>
+      <a className="flex items-center px-6 py-3 text-gray-400 hover:bg-white/10 hover:text-white transition-colors font-human"
+        href="#">
+        <span className="material-symbols-outlined mr-3 text-[20px]" data-icon="palette">palette</span>
+        Art Manager
+      </a>
+      <a className="flex items-center px-6 py-3 text-gray-400 hover:bg-white/10 hover:text-white transition-colors font-human"
+        href="#">
+        <span className="material-symbols-outlined mr-3 text-[20px]" data-icon="archive">archive</span>
+        Archive
+      </a>
+      <a className="flex items-center px-6 py-3 text-gray-400 hover:bg-white/10 hover:text-white transition-colors font-human"
+        href="#">
+        <span className="material-symbols-outlined mr-3 text-[20px]" data-icon="inventory_2">inventory_2</span>
+        Inventory
+      </a>
+    </nav>
+    <div className="mt-auto pb-6">
+      <a className="flex items-center px-6 py-3 text-gray-400 hover:bg-white/10 hover:text-white transition-colors font-human"
+        href="#">
+        <span className="material-symbols-outlined mr-3 text-[20px]" data-icon="person">person</span>
+        Profile
+      </a>
+      <a className="flex items-center px-6 py-3 text-gray-400 hover:bg-white/10 hover:text-white transition-colors font-human"
+        href="#">
+        <span className="material-symbols-outlined mr-3 text-[20px]" data-icon="logout">logout</span>
+        Log Out
+      </a>
+    </div>
+  </aside>
+  <!-- TopNavBar Anchor -->
+  <header
+    className="fixed top-0 right-0 flex justify-between items-center px-6 z-40 w-[calc(100%-220px)] h-[56px] bg-white/85 backdrop-blur-md">
+    <div className="flex items-center space-x-4">
+      <span className="font-industrial font-bold text-lg text-slate-900 uppercase tracking-tight">Production
+        Section</span>
+    </div>
+    <div className="flex items-center space-x-6">
+      <div className="relative">
+        <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+          <span className="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+        </span>
+        <input
+          className="bg-surface-container-high border-none text-sm rounded-sm py-1.5 pl-10 pr-4 w-64 focus:ring-0 border-b-2 border-[#E8321A]"
+          placeholder="Search Job #, Customer..." type="text" />
+      </div>
+      <div className="flex items-center space-x-4">
+        <button className="text-slate-500 hover:text-[#E8321A] transition-all relative">
+          <span className="material-symbols-outlined" data-icon="notifications">notifications</span>
+          <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-[#E8321A]"></span>
+        </button>
+        <div className="h-6 w-px bg-slate-200"></div>
+        <div className="flex items-center space-x-3">
+          <span className="font-industrial text-xs font-bold text-[#E8321A]">CREW</span>
+          <img alt="User" className="w-8 h-8 rounded-full object-cover"
+            data-alt="Close up portrait of a male production manager in professional workshop setting, soft cinematic lighting"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC99rWYyt9G8rpzQFPOBrjjFKkpqpKHaDgvAEO7hKmMR616L71ajkagFibz3b3UXTHROkLWB6PpUgRMYUkjMrQPXiTmkEQyxhIXys-oN2lvDkYV3d0mj56qtwjGmQx8GMKzu-iTMh1uDefjV-KZPEf43xs7u9wvvXZqPMEOC5dSBx4dOaGjaXL8ZtWV3iWSer0Puw-VyZ-n9aaJzZY2nwVyD519XDTbecgy7rBYPsnCmThHY-unKRhMzYNE4K01r5RPMLsWhxi1aRTj" />
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main Content Canvas -->
+  <main className="pt-[72px] p-6 space-y-6">
+    <!-- 4-Column KPI Bar -->
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="bg-surface-container-lowest p-5 shadow-sm border-l-4 border-[#2563EB]">
+        <p className="text-[10px] text-on-surface-variant font-industrial font-bold uppercase tracking-widest mb-1">Jobs
+          Due Today</p>
+        <div className="flex items-baseline space-x-2">
+          <span className="text-3xl font-industrial font-bold">3</span>
+          <span className="text-xs font-human text-secondary font-medium uppercase tracking-tighter">Critical</span>
+        </div>
+      </div>
+      <div className="bg-surface-container-lowest p-5 shadow-sm">
+        <p className="text-[10px] text-on-surface-variant font-industrial font-bold uppercase tracking-widest mb-1">Jobs
+          In Production</p>
+        <div className="flex items-baseline space-x-2">
+          <span className="text-3xl font-industrial font-bold">8</span>
+          <span className="text-xs font-human text-on-surface-variant">Active Press</span>
+        </div>
+      </div>
+      <div className="bg-surface-container-lowest p-5 shadow-sm border-l-4 border-[#E8321A]">
+        <p className="text-[10px] text-on-surface-variant font-industrial font-bold uppercase tracking-widest mb-1">
+          Awaiting Artwork</p>
+        <div className="flex items-baseline space-x-2">
+          <span className="text-3xl font-industrial font-bold text-[#E8321A]">12</span>
+          <span className="text-xs font-human text-[#E8321A] font-medium">Pending Client</span>
+        </div>
+      </div>
+      <div className="bg-surface-container-lowest p-5 shadow-sm">
+        <p className="text-[10px] text-on-surface-variant font-industrial font-bold uppercase tracking-widest mb-1">
+          Completed This Week</p>
+        <div className="flex items-baseline space-x-2">
+          <span className="text-3xl font-industrial font-bold">25</span>
+          <span className="text-xs font-human text-on-surface-variant">Target: 30</span>
+        </div>
+      </div>
+    </div>
+    <!-- Main Dashboard Grid -->
+    <div className="grid grid-cols-10 gap-6">
+      <!-- Left (60%): Today's Priority Queue -->
+      <div className="col-span-10 lg:col-span-6 bg-surface-container-lowest p-0 overflow-hidden shadow-sm">
+        <div className="px-6 py-4 flex justify-between items-center bg-surface-container-low">
+          <h2 className="font-industrial font-bold text-base uppercase tracking-wider text-on-surface">Today's Priority
+            Queue</h2>
+          <span className="font-technical text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-1">LAST
+            SYNC: 09:42:15</span>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-surface-container-high bg-white">
+                <th
+                  className="px-6 py-3 font-industrial text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
+                  Job #</th>
+                <th
+                  className="px-6 py-3 font-industrial text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
+                  Customer</th>
+                <th
+                  className="px-6 py-3 font-industrial text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
+                  Items</th>
+                <th
+                  className="px-6 py-3 font-industrial text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
+                  Status</th>
+                <th
+                  className="px-6 py-3 font-industrial text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
+                  Due Date</th>
+                <th
+                  className="px-6 py-3 font-industrial text-[11px] font-bold text-on-surface-variant uppercase tracking-wider text-right">
+                  Assigned</th>
+              </tr>
+            </thead>
+            <tbody className="font-human text-sm">
+              <tr className="hover:bg-surface-container-low transition-colors group">
+                <td className="px-6 py-4 font-technical font-medium text-secondary">#1042</td>
+                <td className="px-6 py-4 font-medium">Accra Football Club</td>
+                <td className="px-6 py-4 text-xs">50 items</td>
+                <td className="px-6 py-4">
+                  <span
+                    className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">Ready
+                    for Pickup</span>
+                </td>
+                <td className="px-6 py-4 font-semibold text-[#E8321A]">Today</td>
+                <td className="px-6 py-4 text-right">
+                  <span className="bg-surface-container-high text-on-surface-variant px-2 py-1 text-xs">Marcus</span>
+                </td>
+              </tr>
+              <tr className="hover:bg-surface-container-low transition-colors group">
+                <td className="px-6 py-4 font-technical font-medium text-secondary">#1048</td>
+                <td className="px-6 py-4 font-medium">New Horizon School</td>
+                <td className="px-6 py-4 text-xs">80 items</td>
+                <td className="px-6 py-4">
+                  <span
+                    className="bg-[#2563EB]/15 text-[#2563EB] text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">Quality
+                    Check</span>
+                </td>
+                <td className="px-6 py-4">Tomorrow</td>
+                <td className="px-6 py-4 text-right">
+                  <span className="bg-surface-container-high text-on-surface-variant px-2 py-1 text-xs">Sarah</span>
+                </td>
+              </tr>
+              <tr className="hover:bg-surface-container-low transition-colors group">
+                <td className="px-6 py-4 font-technical font-medium text-secondary">#1041</td>
+                <td className="px-6 py-4 font-medium">GoldCoast Apparel</td>
+                <td className="px-6 py-4 text-xs">200 items</td>
+                <td className="px-6 py-4">
+                  <span
+                    className="bg-[#E8321A]/15 text-[#E8321A] text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">Printing</span>
+                </td>
+                <td className="px-6 py-4">2 days</td>
+                <td className="px-6 py-4 text-right">
+                  <span className="bg-surface-container-high text-on-surface-variant px-2 py-1 text-xs">Mike</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="p-4 bg-surface-container-low flex justify-center">
+          <button
+            className="text-[11px] font-industrial font-bold uppercase tracking-widest text-on-surface-variant hover:text-[#E8321A]">View
+            Full Production Schedule →</button>
+        </div>
+      </div>
+      <!-- Right (40%): Attention & Activity -->
+      <div className="col-span-10 lg:col-span-4 space-y-6">
+        <!-- Needs Your Attention -->
+        <div className="bg-surface-container-lowest shadow-sm overflow-hidden">
+          <div className="px-6 py-4 bg-[#E8321A] flex items-center space-x-2">
+            <span className="material-symbols-outlined text-white text-sm" data-icon="warning">warning</span>
+            <h2 className="font-industrial font-bold text-base uppercase tracking-wider text-white">Needs Your Attention
+            </h2>
+          </div>
+          <div className="p-0">
+            <div className="divide-y divide-surface-container-low">
+              <div
+                className="px-6 py-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+                <div>
+                  <span className="font-technical text-xs font-bold text-secondary">#1043</span>
+                  <p className="text-sm font-medium">Bright Star Events</p>
+                  <p className="text-[10px] text-[#E8321A] uppercase font-bold mt-1">Status: Needs Art</p>
+                </div>
+                <button
+                  className="btn-primary-press text-white font-industrial text-[10px] font-bold py-2 px-3 rounded-sm flex items-center tracking-wider">
+                  UPLOAD ART
+                  <span className="material-symbols-outlined text-[14px] ml-1" data-icon="upload">upload</span>
+                </button>
+              </div>
+              <div
+                className="px-6 py-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+                <div>
+                  <span className="font-technical text-xs font-bold text-secondary">#1047</span>
+                  <p className="text-sm font-medium">AfroFest Collective</p>
+                  <p className="text-[10px] text-[#E8321A] uppercase font-bold mt-1">Status: Needs Art</p>
+                </div>
+                <button
+                  className="btn-primary-press text-white font-industrial text-[10px] font-bold py-2 px-3 rounded-sm flex items-center tracking-wider">
+                  UPLOAD ART
+                  <span className="material-symbols-outlined text-[14px] ml-1" data-icon="upload">upload</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Recent Activity Feed -->
+        <div className="bg-surface-container-lowest shadow-sm overflow-hidden">
+          <div className="px-6 py-4 bg-surface-container-low">
+            <h2 className="font-industrial font-bold text-base uppercase tracking-wider text-on-surface">Recent Activity
+            </h2>
+          </div>
+          <div className="p-6">
+            <div
+              className="space-y-4 relative before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container-high">
+              <div className="flex space-x-4 relative">
+                <div
+                  className="w-6 h-6 rounded-full bg-white border-2 border-green-500 flex items-center justify-center z-10">
+                  <span className="material-symbols-outlined text-[14px] text-green-500" data-icon="check_circle"
+                    data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                </div>
+                <div>
+                  <p className="text-xs text-on-surface leading-tight">
+                    <span className="font-technical font-bold">[Job #1042]</span> moved to <span
+                      className="font-bold">Printing</span> by <span
+                      className="font-medium text-secondary">Marcus</span>
+                  </p>
+                  <p className="text-[10px] text-on-surface-variant font-medium mt-0.5">2h ago</p>
+                </div>
+              </div>
+              <div className="flex space-x-4 relative">
+                <div
+                  className="w-6 h-6 rounded-full bg-white border-2 border-[#2563EB] flex items-center justify-center z-10">
+                  <span className="material-symbols-outlined text-[14px] text-[#2563EB]" data-icon="edit">edit</span>
+                </div>
+                <div>
+                  <p className="text-xs text-on-surface leading-tight">
+                    <span className="font-technical font-bold">[Job #1048]</span> updated by <span
+                      className="font-medium text-secondary">Sarah</span>
+                  </p>
+                  <p className="text-[10px] text-on-surface-variant font-medium mt-0.5">3h ago</p>
+                </div>
+              </div>
+              <div className="flex space-x-4 relative">
+                <div
+                  className="w-6 h-6 rounded-full bg-white border-2 border-[#E8321A] flex items-center justify-center z-10">
+                  <span className="material-symbols-outlined text-[14px] text-[#E8321A]" data-icon="error">error</span>
+                </div>
+                <div>
+                  <p className="text-xs text-on-surface leading-tight">
+                    <span className="font-technical font-bold">[Job #1043]</span> flagged as <span
+                      className="font-bold text-[#E8321A]">Missing Artwork</span>
+                  </p>
+                  <p className="text-[10px] text-on-surface-variant font-medium mt-0.5">5h ago</p>
+                </div>
+              </div>
+              <div className="flex space-x-4 relative opacity-80">
+                <div
+                  className="w-6 h-6 rounded-full bg-white border-2 border-surface-container-highest flex items-center justify-center z-10">
+                  <span className="material-symbols-outlined text-[14px] text-on-surface-variant"
+                    data-icon="inventory_2">inventory_2</span>
+                </div>
+                <div>
+                  <p className="text-xs text-on-surface leading-tight">
+                    <span className="font-technical font-bold">[Job #1041]</span> materials checked into pressroom
+                  </p>
+                  <p className="text-[10px] text-on-surface-variant font-medium mt-0.5">Yesterday</p>
+                </div>
+              </div>
+              <div className="pt-2">
+                <button
+                  className="w-full py-2 text-[10px] font-industrial font-bold text-on-surface-variant uppercase bg-surface-container-low hover:bg-surface-container-high transition-colors">Load
+                  Older Activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- FAB Action (Contextual: Home/Dashboard) -->
+  <button
+    className="fixed bottom-8 right-8 btn-primary-press w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-white z-50 hover:scale-105 transition-transform">
+    <span className="material-symbols-outlined text-2xl" data-icon="add">add</span>
+  </button>
+</body>
+
+</html>
