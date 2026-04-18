@@ -2,7 +2,6 @@
 
 import type { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
-import { invoke } from '@tauri-apps/api/core'
 
 import {
   UserIcon,
@@ -34,17 +33,11 @@ type Props = {
 const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
   const router = useRouter()
 
-  const onLogout = async () => {
+  const onLogout = () => {
     window.localStorage.removeItem('authenticated-role')
     window.localStorage.removeItem('auth-role')
     window.sessionStorage.clear()
-
-    try {
-      await invoke('logout_to_login')
-    } catch (error) {
-      console.error('Unable to open login window:', error)
-      router.replace('/login')
-    }
+    router.replace('/login')
   }
 
   return (
