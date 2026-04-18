@@ -1,4 +1,7 @@
+'use client'
+
 import type { ReactNode } from 'react'
+import { useRouter } from 'next/navigation'
 
 import {
   UserIcon,
@@ -28,6 +31,15 @@ type Props = {
 }
 
 const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
+  const router = useRouter()
+
+  const onLogout = () => {
+    window.localStorage.removeItem('authenticated-role')
+    window.localStorage.removeItem('auth-role')
+    window.sessionStorage.clear()
+    router.replace('/login')
+  }
+
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
@@ -82,7 +94,7 @@ const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem variant='destructive' className='px-4 py-2.5 text-base'>
+        <DropdownMenuItem variant='destructive' className='px-4 py-2.5 text-base' onClick={onLogout}>
           <LogOutIcon className='size-5' />
           <span>Logout</span>
         </DropdownMenuItem>
