@@ -21,6 +21,25 @@ export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
+    if (!isTauriRuntime()) return;
+
+    let unlisten: (() => void) | undefined;
+
+    void import('@tauri-apps/api/event')
+      .then(({ listen }) => listen('clear-auth', () => {
+        window.localStorage.removeItem('authenticated-role');
+        router.replace('/')
+      }))
+      .then((cleanup) => {
+        unlisten = cleanup;
+      });
+
+    return () => {
+      unlisten?.();
+    };
+  }, []);
+
+  useEffect(() => {
     const fromStorage = window.localStorage.getItem('authenticated-role');
     if (fromStorage && isRole(fromStorage)) {
       router.replace(`/${fromStorage}`);
@@ -58,7 +77,7 @@ export default function HomePage() {
   return (
     <main style={{ display: 'grid', placeItems: 'center', padding: '2rem' }}>
       <section className="w-full max-w:[420px] my-0 mx-auto border rounded-md p-6">
-        <h1 style={{ marginTop: 0 }}>Investment Desktop</h1>
+        <h1 style={{ marginTop: 0 }}>GCP Images Printing Management System</h1>
         <p style={{ marginBottom: 0, color: '#94a3b8' }}>
           Waiting for authenticated role routing...
         </p>

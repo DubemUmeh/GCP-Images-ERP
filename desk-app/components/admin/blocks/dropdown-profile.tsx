@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import type { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
@@ -12,9 +12,9 @@ import {
   SquarePenIcon,
   CirclePlusIcon,
   LogOutIcon
-} from 'lucide-react'
+} from 'lucide-react';
 
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,7 +23,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu';
 
 type Props = {
   trigger: ReactNode
@@ -32,7 +32,6 @@ type Props = {
 }
 
 const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
-  const router = useRouter()
 
   const onLogout = async () => {
     window.localStorage.removeItem('authenticated-role')
