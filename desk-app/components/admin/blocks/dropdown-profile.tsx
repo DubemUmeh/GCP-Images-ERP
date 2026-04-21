@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import type { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
@@ -32,6 +32,7 @@ type Props = {
 }
 
 const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
+  const router = useRouter()
 
   const onLogout = async () => {
     window.localStorage.removeItem('authenticated-role')
