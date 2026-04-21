@@ -1,1 +1,1 @@
-{"default":{"identifier":"default","description":"Default capability for the investment desktop app","local":true,"windows":["main","login"],"permissions":["core:default"]}}
+{"default":{"identifier":"default","description":"Default capability for the GCP Images Printing Management System desktop app","local":true,"windows":["main","login"],"permissions":["core:default"]}}
