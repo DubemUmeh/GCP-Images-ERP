@@ -14,7 +14,7 @@ fn authenticate_and_open_main(app: AppHandle, role: String) -> Result<(), String
   main_window.set_focus().map_err(|error| error.to_string())?;
 
   if let Some(login_window) = app.get_webview_window("login") {
-    login_window.close().map_err(|error| error.to_string())?;
+    login_window.hide().map_err(|error| error.to_string())?;
   }
 
   Ok(())
@@ -23,18 +23,22 @@ fn authenticate_and_open_main(app: AppHandle, role: String) -> Result<(), String
 #[tauri::command]
 fn logout_to_login(app: AppHandle) -> Result<(), String> {
   if let Some(main_window) = app.get_webview_window("main") {
+    main_window.emit("clear-auth", ()).map_err(|e| e.to_string())?;
     main_window.hide().map_err(|error| error.to_string())?;
   }
 
   if let Some(login_window) = app.get_webview_window("login") {
+    login_window.emit("reset-login", ()).map_err(|e| e.to_string())?;
     login_window.show().map_err(|error| error.to_string())?;
     login_window.set_focus().map_err(|error| error.to_string())?;
   } else {
     let login_window = WebviewWindowBuilder::new(&app, "login", WebviewUrl::App("/login".into()))
       .title("Login")
-      .inner_size(450.0, 300.0)
+      .inner_size(450.0, 250.0)
       .center()
       .resizable(false)
+      .maximizable(false)
+      // .decorations(false)
       .fullscreen(false)
       .build()
       .map_err(|error| error.to_string())?;
@@ -57,9 +61,11 @@ fn main() {
 
       let _login = WebviewWindowBuilder::new(app, "login", WebviewUrl::App("/login".into()))
         .title("Login")
-        .inner_size(450.0, 300.0)
+        .inner_size(450.0, 250.0)
         .center()
         .resizable(false)
+        .maximizable(false)
+        // .decorations(false)
         .fullscreen(false)
         .build()?;
 

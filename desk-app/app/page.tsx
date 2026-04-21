@@ -21,6 +21,25 @@ export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
+    if (!isTauriRuntime()) return;
+
+    let unlisten: (() => void) | undefined;
+
+    void import('@tauri-apps/api/event')
+      .then(({ listen }) => listen('clear-auth', () => {
+        window.localStorage.removeItem('authenticated-role');
+        router.replace('/')
+      }))
+      .then((cleanup) => {
+        unlisten = cleanup;
+      });
+
+    return () => {
+      unlisten?.();
+    };
+  }, []);
+
+  useEffect(() => {
     const fromStorage = window.localStorage.getItem('authenticated-role');
     if (fromStorage && isRole(fromStorage)) {
       router.replace(`/${fromStorage}`);

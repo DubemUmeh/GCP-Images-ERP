@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import type { ReactNode } from 'react'
-import { useRouter } from 'next/navigation'
+import type { ReactNode } from 'react';
+import { invoke } from '@tauri-apps/api/core';
 
 import {
   UserIcon,
@@ -11,9 +11,9 @@ import {
   SquarePenIcon,
   CirclePlusIcon,
   LogOutIcon
-} from 'lucide-react'
+} from 'lucide-react';
 
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,7 +22,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu';
 
 type Props = {
   trigger: ReactNode
@@ -31,13 +31,12 @@ type Props = {
 }
 
 const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
-  const router = useRouter()
 
-  const onLogout = () => {
-    window.localStorage.removeItem('authenticated-role')
-    window.localStorage.removeItem('auth-role')
-    window.sessionStorage.clear()
-    router.replace('/login')
+  const onLogout = async () => {
+    window.localStorage.removeItem('authenticated-role');
+    window.localStorage.removeItem('auth-role');
+    window.sessionStorage.clear();
+    await invoke('logout_to_login');
   }
 
   return (
