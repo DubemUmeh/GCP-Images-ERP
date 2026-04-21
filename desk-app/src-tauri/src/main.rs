@@ -13,8 +13,8 @@ fn authenticate_and_open_main(app: AppHandle, role: String) -> Result<(), String
         .ok_or_else(|| "Main window was not found".to_string())?;
 
     let script = format!(
-    "window.localStorage.setItem('authenticated-role', '{role_route}'); window.location.replace('/{role_route}');"
-  );
+        "window.localStorage.setItem('authenticated-role', '{role_route}'); window.location.replace('/{role_route}');"
+    );
 
     main_window
         .eval(script.as_str())
@@ -37,6 +37,9 @@ fn authenticate_and_open_main(app: AppHandle, role: String) -> Result<(), String
 #[tauri::command]
 fn logout_to_login(app: AppHandle) -> Result<(), String> {
     if let Some(main_window) = app.get_webview_window("main") {
+        main_window
+            .emit("clear-auth", ())
+            .map_err(|error| error.to_string())?;
         main_window.hide().map_err(|error| error.to_string())?;
     }
 

@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 type Role = 'users' | 'admin';
 
@@ -26,10 +26,12 @@ export default function HomePage() {
     let unlisten: (() => void) | undefined;
 
     void import('@tauri-apps/api/event')
-      .then(({ listen }) => listen('clear-auth', () => {
-        window.localStorage.removeItem('authenticated-role');
-        router.replace('/')
-      }))
+      .then(({ listen }) =>
+        listen('clear-auth', () => {
+          window.localStorage.removeItem('authenticated-role');
+          router.replace('/');
+        })
+      )
       .then((cleanup) => {
         unlisten = cleanup;
       });
@@ -37,7 +39,7 @@ export default function HomePage() {
     return () => {
       unlisten?.();
     };
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     const fromStorage = window.localStorage.getItem('authenticated-role');
@@ -53,15 +55,17 @@ export default function HomePage() {
     let unlisten: (() => void) | undefined;
 
     void import('@tauri-apps/api/event')
-      .then(({ listen }) => listen<string>('role-selected', (event) => {
-        const role = event.payload;
-        if (!isRole(role)) {
-          return;
-        }
+      .then(({ listen }) =>
+        listen<string>('role-selected', (event) => {
+          const role = event.payload;
+          if (!isRole(role)) {
+            return;
+          }
 
-        window.localStorage.setItem('authenticated-role', role);
-        router.replace(`/${role}`);
-      }))
+          window.localStorage.setItem('authenticated-role', role);
+          router.replace(`/${role}`);
+        })
+      )
       .then((cleanup) => {
         unlisten = cleanup;
       })
