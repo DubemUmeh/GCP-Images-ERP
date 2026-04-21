@@ -32,6 +32,7 @@ type Props = {
 }
 
 const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
+  const router = useRouter()
 
   const onLogout = async () => {
     window.localStorage.removeItem('authenticated-role')

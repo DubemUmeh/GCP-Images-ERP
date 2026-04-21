@@ -49,7 +49,7 @@ fn logout_to_login(app: AppHandle) -> Result<(), String> {
         let login_window =
             WebviewWindowBuilder::new(&app, "login", WebviewUrl::App("/login".into()))
                 .title("Login")
-                .inner_size(450.0, 300.0)
+                .inner_size(450.0, 250.0)
                 .center()
                 .resizable(false)
                 .fullscreen(false)
@@ -76,7 +76,7 @@ fn main() {
 
             let _login = WebviewWindowBuilder::new(app, "login", WebviewUrl::App("/login".into()))
                 .title("Login")
-                .inner_size(450.0, 300.0)
+                .inner_size(450.0, 250.0)
                 .center()
                 .resizable(false)
                 .fullscreen(false)
